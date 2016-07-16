@@ -9,3 +9,6 @@ class Menu (models.Model):
 	padre=models.PositiveIntegerField()
 	orden=models.PositiveIntegerField()
 	id_aplicacion=models.ForeignKey(Aplicacion)
+
+	def __unicode__(self):
+		return self.label

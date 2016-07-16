@@ -1,3 +1,24 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Empresa
+from acciones import export_as_excel
+
+from usuario.models import Usuario
+
+#class UsuarioInline(admin.StackedInLine):
+#	model = Usuario
+#	extra = 1
+
+class EmpresaAdmin(admin.ModelAdmin):
+	list_display =('nombre','nit','logo_Empresa','activo')
+	list_filter = ('nombre','estado')
+	search_fields = ('nombre',)
+	actions = (export_as_excel, )
+#	inlines = [UsuarioInline,]
+
+	def activo(self,obj):
+		return obj.estado == 1
+
+	activo.boolean = True
+
+admin.site.register(Empresa,EmpresaAdmin)

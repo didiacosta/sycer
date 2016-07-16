@@ -26,16 +26,44 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'))
 # Application definition
 
+TEMPLATES = [
+    {
+        'OPTIONS': {
+            'context_processors':[
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+            ],
+        },
+    },
+]
+GRAPPELLI_ADMIN_TITLE = 'SYCER'
+#from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+#TEMPLATE_CONTEXT_PROCESSORS =  TCP + ('django.core.context_processors.request',)
+
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accion',
+    'aplicacion',
+    'menu',
+    'empresa',
+    'asignacion_espacio',
+    'usuario',
+    'acceso',
+    'accesoAccion',
+    'tipoCertificado',
+    'cliente',
+    'empresaCliente',
+    'certificado',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,7 +104,8 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -91,3 +120,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+MEDIA_URL = '/media/'
+
+LOGIN_URL = '/usuario/login/'
+LOGOUT_URL = '/usuario/logout/'

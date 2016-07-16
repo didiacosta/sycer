@@ -4,3 +4,6 @@ from django.db import models
 class Aplicacion (models.Model):
 	nombre=models.CharField(max_length=50)
 	icono=models.CharField(max_length=40)
+
+	def __unicode__(self):
+		return self.nombre
