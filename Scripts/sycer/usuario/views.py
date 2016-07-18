@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .forms import  EditarEmailForm
+from .forms import  EditarEmailForm, EditarFotoForm
 from .models import Usuario
 
 @login_required
@@ -68,3 +68,19 @@ def editar_email_view(request):
         form = EditarEmailForm()
         
     return render(request, 'usuario/editar_email.html', {'form': form})
+
+@login_required
+def editar_foto_view(request):
+    if request.method == 'POST':
+
+        form = EditarFotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            usuario = Usuario.objects.get(user=request.user)
+            usuario.foto = form.cleaned_data['foto']
+            usuario.save()
+            messages.success(request, 'Su foto ha sido actualizada con exito!.')
+            return redirect(reverse('usuario.perfil'))
+    else:
+        form = EditarFotoForm()
+
+    return render(request, 'usuario/editar_foto.html', {'form': form})    
