@@ -6,8 +6,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .forms import  EditarEmailForm, EditarFotoForm
+from .forms import  EditarEmailForm, EditarFotoForm, EditarClaveForm
 from .models import Usuario
+
+from django.contrib.auth.hashers import make_password
 
 @login_required
 def index_view(request):
@@ -44,19 +46,6 @@ def profile_view(request):
 
 @login_required
 def editar_email_view(request):
-    # if request.method == 'POST':
-    #     form = EditarEmailForm(request.POST, request=request)
-    #     if form.is_valid():
-    #         request.user.email = form.cleaned_data['email']
-    #         request.user.save()
-    #         messages.success(request, 'El email ha sido cambiado con exito!.')
-    #         return redirect(reverse('usuario.perfil'))
-    # else:
-    #     form = EditarEmailForm(
-    #         request=request,
-    #         initial={'email': request.user.email})
-        
-    # return render(request, 'usuario/editar_email.html', {'form': form})
     if request.method == 'POST':
         form = EditarEmailForm(request.POST)
         if form.is_valid():
@@ -84,3 +73,18 @@ def editar_foto_view(request):
         form = EditarFotoForm()
 
     return render(request, 'usuario/editar_foto.html', {'form': form})    
+
+@login_required
+def editar_clave_view(request):
+    if request.method == 'POST':
+        form = EditarClaveForm(request.POST)
+        if form.is_valid():
+            request.user.password = make_password(form.cleaned_data['password'])
+            request.user.save()
+            messages.success(request, 'Su clave ha sido cambiada con exito...!')
+            messages.success(request, 'Es necesario introducir los datos para entrar...!')
+            return redirect(reverse('usuario.index'))
+    else:
+        form = EditarClaveForm()
+    return render(request,'usuario/editar_contrasena.html',{'form' : form})
+
