@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from empresaCliente.models import EmpresaCliente
 from usuario.models import Usuario
 from cliente.models import Cliente
@@ -6,7 +6,7 @@ from empresaCliente.forms import EmpresaClienteForm
 
 from django.shortcuts import redirect
 from django.contrib import messages
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 
 # Create your views here.
 
@@ -74,3 +74,16 @@ class EmpresaClienteCreateView(CreateView):
 	def form_valid(self,form):
 		form.instance.owner = self.request.user
 		return super(EmpresaClienteCreateView,self).form_valid(form)
+
+class EmpresaClienteDeleteView(DeleteView):
+	template_name='empresaCliente/confirmar-eliminacion.html'
+	model = EmpresaCliente
+
+	def get_success_url(self):
+		messages.success(self.request, 'El cliente ha sido eliminado con exito!.')
+		return reverse_lazy('empresaCliente.empresaCLiente-list')
+
+	def dispatch(self,request,*args,**kwargs):
+		if not request.user.has_perms('empresaCliente.delete_empresaCliente'):
+			return redirect(settings.LOGIN_URL)
+		return super(EmpresaClienteDeleteView,self).dispatch(request, *args, **kwargs)

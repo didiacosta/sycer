@@ -42,12 +42,12 @@
           {% endif%}
             <a href="../../../empresaCliente/clientes"><i class="fa fa-group"></i><span>Clientes</span> </a> </li>
         {% endif %}
-        {% if request.path == '/certificado/' %}
+        {% if '/certificado/' in request.path %}
           <li class="active">
         {% else %}
           <li>  
         {% endif%}
-        <a href="/certificado"><i class="fa fa-folder"></i><span>Certificados</span> </a></li>
+        <a href="/certificado/certificados"><i class="fa fa-folder"></i><span>Certificados</span> </a></li>
         {% if request.path == '/asignacion_espacio/' %}
           <li class="active">
         {% else %}

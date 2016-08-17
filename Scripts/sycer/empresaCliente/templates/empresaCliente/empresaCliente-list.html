@@ -26,7 +26,15 @@
 							<font color="red"><i class="fa fa-minus-circle fa-2x"></i></font>
 						{% endif %}
 					</td>
-					<td><a href="../editarCliente/{{ empresaCliente.id_cliente.id}}"><i class="fa fa-pencil fa-2x"></i></a></td>
+					<td>
+						<a href="../editarCliente/{{ empresaCliente.id_cliente.id}}">
+							<i class="fa fa-pencil fa-2x"></i>
+						</a>
+						<a href="../borrarCliente/{{ empresaCliente.id}}">
+							<i class="fa fa-trash-o fa-2x"></i>
+						</a>
+
+					</td>
 				</tr>
 			{% endfor %}
 			</tbody>
