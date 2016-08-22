@@ -56,6 +56,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
+    'departamento',
+    'municipio',
     'accion',
     'aplicacion',
     'menu',
@@ -105,6 +108,7 @@ DATABASES = {
         'PORT': '3307',                      
     },
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

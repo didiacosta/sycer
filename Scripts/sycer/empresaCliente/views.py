@@ -7,6 +7,7 @@ from empresaCliente.forms import EmpresaClienteForm
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.conf import settings
 
 # Create your views here.
 
