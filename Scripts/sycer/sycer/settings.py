@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'))
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 # Application definition
 
 TEMPLATES = [
@@ -56,7 +56,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
     'departamento',
     'municipio',
     'accion',
@@ -71,6 +70,12 @@ INSTALLED_APPS = (
     'cliente',
     'empresaCliente',
     'certificado',
+    'inspector',
+    'empresaInspector',
+    'dictamen',
+    'dictamenDistribucion',
+    'aspectoEvaluado',
+    'evaluacionDictamen',
 
 )
 

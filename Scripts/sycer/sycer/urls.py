@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^empresaCliente/', include('empresaCliente.urls')),
     url(r'^certificado/', include('certificado.urls')),
     url(r'^sycer/$', views.search_view, name='sycer.busqueda'),
+    url(r'^empresa/', include('empresa.urls')),
+    url(r'^empresaInspector/', include('empresaInspector.urls')),
     #url(r'^$', 'usuario.views.index_view', name='usuario.index'),
     #url(r'^login/$', 'usuario.views.login_view', name='usuario.login'),
 )

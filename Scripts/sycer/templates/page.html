@@ -41,6 +41,14 @@
             <li>  
           {% endif%}
             <a href="../../../empresaCliente/clientes"><i class="fa fa-group"></i><span>Clientes</span> </a> </li>
+          {% if '/empresa/' in request.path %}
+            <li class="active">
+          {% else %}
+            <li>  
+          {% endif%}
+            <a href="/empresa/detalleEmpresa/{{ user.usuario.id_empresa.id }}"><i class="fa fa-cogs"></i>
+            <span>Organismo</span></a> </li>
+
         {% endif %}
         {% if '/certificado/' in request.path %}
           <li class="active">
@@ -54,6 +62,8 @@
           <li>  
         {% endif%}
         <a href="/asignacionespacio"><i class="fa fa-hdd-o"></i><span>Almacenamiento</span> </a> </li>
+        </span> </a></li>
+                
       </ul>
     </div>
     <!-- /container --> 

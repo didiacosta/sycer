@@ -10,7 +10,7 @@ from usuario.models import Usuario
 #	extra = 1
 
 class EmpresaAdmin(admin.ModelAdmin):
-	list_display =('nombre','nit','logo_Empresa','activo')
+	list_display =('nombre','nit','logo_Empresa','resolucion','direccion','telefono','activo')
 	list_filter = ('nombre','estado')
 	search_fields = ('nombre',)
 	actions = (export_as_excel, )
