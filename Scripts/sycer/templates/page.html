@@ -62,6 +62,12 @@
           <li>  
         {% endif%}
         <a href="/asignacionespacio"><i class="fa fa-hdd-o"></i><span>Almacenamiento</span> </a> </li>
+       {% if '/dictamen/' in request.path %}
+          <li class="active">
+        {% else %}
+          <li>  
+        {% endif%}
+        <a href="{% url 'dictamen.dictamen-list' %}"><i class="fa fa fa-briefcase"></i><span>Dictamenes</span> </a> </li>
         </span> </a></li>
                 
       </ul>

@@ -14,7 +14,7 @@ class EvaluacionDictamen(models.Model):
 		retorno ='No encontrado'
 		
 		if self.respuesta == '1':
-			retorno='Aplica'
+			retorno='No Aplica'
 		if self.respuesta=='2':
 			retorno = 'Cumple'
 		if self.respuesta=='3':

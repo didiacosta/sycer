@@ -14,7 +14,7 @@ class Dictamen(models.Model):
 	inspector = models.ForeignKey(Inspector, related_name='inspector_tecnico')
 	director_tecnico = models.ForeignKey(Inspector, related_name='director_tecnico')
 	anexos = models.CharField(max_length=150)
-	observaciones = models.CharField(max_length=150)
+	observaciones = models.TextField(max_length=150)
 	aprobada = models.BooleanField(default=False)
 	municipio = models.ForeignKey(Municipio, null=True)
 	organismo = models.ForeignKey(Empresa, null=True)
@@ -26,7 +26,17 @@ class Dictamen(models.Model):
 	responsableContruccion = models.CharField(max_length=100, null=True)
 	matriculaResponsableContruccion = models.CharField(max_length=100, null=True)
 
-
+	def nombreTipo(self):
+		retorno ='No encontrado'
+		
+		if self.tipo == '1':
+			retorno='Distribucion'
+		if self.tipo=='2':
+			retorno = 'Subestacion'
+		if self.tipo=='3':
+			retorno='Usuario Final'
+		return retorno
+		
 	def nombreCliente(self):
 		return self.cliente.id_cliente.nombre
 

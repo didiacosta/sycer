@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^sycer/$', views.search_view, name='sycer.busqueda'),
     url(r'^empresa/', include('empresa.urls')),
     url(r'^empresaInspector/', include('empresaInspector.urls')),
+    url(r'^dictamen/', include('dictamen.urls')),
     #url(r'^$', 'usuario.views.index_view', name='usuario.index'),
     #url(r'^login/$', 'usuario.views.login_view', name='usuario.login'),
 )
