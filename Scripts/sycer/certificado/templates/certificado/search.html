@@ -13,8 +13,10 @@
 		    <div class="">
 		    	<label for="q">Buscar: </label>
 		    	<input type="text" name="q" value="{{ query|escape }}" 
-		    	placeholder="Buscar por numero, nombre o descripcion" class="span6">
-		    	<p class="help-block">Digite parte del número, nombre o descripción del certificado.</p>
+		    	placeholder="Buscar por numero de certificado" class="span6">
+		    	<input type="text" name="codigoSeguridad" 
+		    	placeholder="Codigo de seguridad del certificado" class="span6">
+		    	<p class="help-block">Especifique el codigo de seguridad del certificado para realizar la busqueda</p>
 		    	<button class="btn btn-primary btn-large" type="submit" >Buscar</button>
 		    </div>
 	    </div>	

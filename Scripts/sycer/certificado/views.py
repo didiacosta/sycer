@@ -96,11 +96,11 @@ class CertificadoPublicDetailView(DetailView):
 
 def search_view(request):
 	query = request.GET.get('q', '')
-	if query:
+	codigoSeguridad = request.GET.get('codigoSeguridad', '')
+	if query and codigoSeguridad:
 		qset = (
-			Q(numero__icontains=query)|
-			Q(nombre__icontains=query)|
-			Q(descripcion__icontains=query)
+			Q(numero=query)&
+			Q(codigoSeguridad=codigoSeguridad)
 			)
 		results = Certificado.objects.filter(qset).distinct()
 	else:
