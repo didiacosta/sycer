@@ -15,7 +15,7 @@ class CertificadoListView(ListView):
 	model = Certificado
 	template_name = 'certificado/certificado-list.html'
 	#ordering = 'nombre'
-	paginate_by = 10
+	paginate_by = 20
 
 	def get_queryset(self):
 		if self.kwargs.get('numero'):
